@@ -16,35 +16,49 @@ function bindEventListeners (dots) {
 }
 
 function makeGreen (evt) {
-  evt.preventDefault()
-  evt.target.classList.toggle('green')
-  updateCounts()
+  evt.preventDefault();
+  evt.target.className = 'green';
+  updateCounts();
 }
 
 // CREATE FUNCTION makeBlue HERE
 function makeBlue(evt) {
-  evt.target.classList.toggle('blue')
-  updateCounts()
+  evt.target.className = 'blue';
+  updateCounts();
 }
 
 function hide (evt) {
-  evt.target.classList.toggle('invisible')
-  updateCounts()
+  evt.target.className = 'invisible';
+  updateCounts();
 }
 // CREATE FUNCTION hide HERE
 
-function updateCounts () {
   var totals = {
     blue: 0,
     green: 0,
     invisible: 0
   }
 
+function updateCounts() {
+    totals.blue = document.querySelectorAll("div.blue").length;
+    totals.green = document.querySelectorAll("div.green").length;
+    totals.invisible = document.querySelectorAll("div.invisible").length;
+    displayTotals(totals);
+  }
+
   // WRITE CODE HERE TO COUNT BLUE, GREEN, AND INVISIBLE DOTS
+    // var getDots = document.getElementsByClassName('board')[0].children;
+    //   for (i = 0; i < getDots.length; i++) {
+    //     if (getDots[i].classList.contains('blue')) {
+    //       totals.blue += 1;
+    //     } else if (getDots[i].classList.contains('green')) {
+    //       totals.green += 1;
+    //     } else if (getDots[i].classList.contains('invisible')) {
+    //       totals.invisible += 1;
+    //     }
+    //   }
 
   // Once you've done the counting, this function will update the display
-  displayTotals(totals)
-}
 
 function displayTotals (totals) {
   for (var key in totals) {
